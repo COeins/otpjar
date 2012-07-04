@@ -1,42 +1,86 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Otpjar by COeins</title>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<title>OTPmail by COeins</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">Otpjar</h1>
-        <p class="header">One Time Pad based file encryption</p>
+		<link rel="stylesheet" href="stylesheets/styles.css">
+		<link rel="stylesheet" href="stylesheets/pygment_trac.css">
+		<script src="javascripts/scale.fix.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<h1 class="header">otp.jar</h1>
+				<p class="header">Download latest version:</p>
+				<ul>
+					<li class="download"><a class="buttons" href="downloads/otp_0210.jar">0.2.1.0</a></li>
+				</ul>
+				<p class="header">Download source as:</p>
+				<ul>
+					<li class="download"><a class="buttons" href="https://github.com/COeins/otpjar/zipball/master">ZIP Archive</a></li>
+					<li class="download"><a class="buttons" href="https://github.com/COeins/otpjar/tarball/master">TAR Archive</a></li>
+					<li><a class="buttons github" href="https://github.com/COeins/otpjar">View On GitHub</a></li>
+				</ul>
+				<p style="font-size: .8em; line-height: 1em" class="header">This project is maintained by <a class="header name" href="https://github.com/COeins">COeins</a></p>
+			</header>
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/COeins/otpjar/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/COeins/otpjar/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/COeins/otpjar">View On GitHub</a></li>
-        </ul>
+			<section>
+				<h1>otp.jar</h1>
+					<p><em>One Time Pad based file encryption</em></p>
+				<h2>About</h2>
+					<p>otp.jar is a Java based program to encrypt and decrypt files with One Time Pad. Encrypted files are also signed and verified to ensure unmodified transmissions. It also allows the generation, management and synchronisation of the required keys.</p>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/COeins">COeins</a></p>
+				<h2>Usage</h2>
+					<p>All otp.jar operations are controlled via command line switches:</p>
+<pre style="font-size: .7em">
+java -jar otp.jar [command] [arg] [options]
 
+Commands: (exactly one has to be used)
+-e, --encrypt &lt;filename&gt;	Encrypts the specified file
+-d, --decrypt &lt;filename&gt;	Decrypts the specified file
+ (If no filename is given stdin is used by default)
 
-      </header>
-      <section>
-        <p>(more stuff comming later)</p>
-      </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
-		
-  </body>
+--gen-key			Generates new OTP key
+--export &lt;path&gt;			Exports a key key the specified path
+--import &lt;path/file.key&gt;	Imports the specified key from 'filename.key'
+--edit-key &lt;key-id&gt;		Changes the passphrase or alias
+--modify-key &lt;ciphertext&gt; &lt;new plaintext&gt;
+				Generates a new plaintext for a given ciphertext
+--request-sync &lt;key-id&gt;		Generate synchronisation request message
+--syncronize &lt;key-id&gt;		Generate key synchronisation message
+--key-info &lt;key-id&gt;		Displays the key status page (combine with -v for details)
+
+--list-keys			Lists all locally installed keys
+-h, --help			Display this help page
+
+Options: (several may be combined)
+-a, --armor			Use ascii-armored output (for e-mail)
+-o, --outfile &lt;filename&gt;	Write Output to 'filename' instead of stdout
+-k, --key &lt;key-id&gt;		Use specfied key for encryption or export, as id or alias
+-r, --ring &lt;ring-id&gt;		Specify key-ring id, may be 'new' for generated or imported keys
+--otplocation &lt;path/file.pad&gt;	Specify new OTP location
+--rngfile &lt;path/file&gt;		Specify source file for random numbers
+--basedir &lt;path&gt;		Change default location for keys and settings
+--passphrase &lt;pwd&gt;		Use given passphrase
+--passphrase-stdin &lt;num&gt;	Read passphrase from stdin (before reading any other input)
+
+-v, --verbose                   Verbose status messages
+-q, --quiet                     Less status messages
+--yes / --no                    Assume yes/no on confirmation questions                                       </pre>
+				<h2>Licence</h2>
+					<p>otp.jar can be used or modified under the terms of the <a href="http://www.gnu.org/licenses/lgpl-3.0">GNU Lesser General Public License, version&nbsp;3.0</a> or later.</p>
+			</section>
+			<footer>
+				<p style="font-size: .8em; line-height: 1em">Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</p>
+			</footer>
+		</div>
+		<!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+
+	</body>
 </html>
